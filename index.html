@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f7f0e5">
+  <meta name="description" content="Pães artesanais, empadas, bolos, tortas e salgados feitos com carinho. Faça sua encomenda pelo WhatsApp.">
+  <title>Um Salto no Sabor | Confeitaria</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --cream:#f7f0e5;--paper:#fffaf2;--ink:#35251f;--muted:#806e61;
+      --brown:#704632;--brown-dark:#4b3025;--caramel:#bd8a58;--gold:#d9b77c;
+      --sage:#75816a;--line:rgba(82,55,39,.14);--shadow:0 22px 60px rgba(65,42,28,.12);
+      --serif:"Playfair Display",Georgia,serif;--sans:"DM Sans",Arial,sans-serif;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;scroll-padding-top:90px}
+    body{font-family:var(--sans);background:var(--paper);color:var(--ink);overflow-x:hidden}
+    a{color:inherit;text-decoration:none}
+    button{font:inherit}
+    img{display:block;width:100%;object-fit:cover}
+    .announcement{background:var(--brown-dark);color:#f8ead6;text-align:center;padding:9px 16px;font-size:11px;letter-spacing:.13em;text-transform:uppercase}
+    .announcement span{color:var(--gold)}
+    header{height:82px;padding:0 7%;display:flex;align-items:center;justify-content:space-between;background:rgba(255,250,242,.93);backdrop-filter:blur(14px);position:sticky;top:0;z-index:50;border-bottom:1px solid var(--line)}
+    .brand{display:flex;align-items:center;gap:11px}
+    .brand-mark{width:42px;height:42px;border:1px solid var(--caramel);border-radius:50%;display:grid;place-items:center;color:var(--brown);font-family:var(--serif);font-size:23px}
+    .brand-name{font:600 19px var(--serif);letter-spacing:.02em}
+    .brand-sub{font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:var(--muted);margin-top:2px}
+    nav{display:flex;gap:32px;align-items:center}
+    nav a{font-size:12px;color:#665449;transition:.25s}
+    nav a:hover{color:var(--caramel)}
+    .nav-cta,.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border:0;border-radius:3px;background:var(--brown);color:#fff9ef;padding:14px 21px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;transition:transform .25s,background .25s,box-shadow .25s;cursor:pointer}
+    .nav-cta:hover,.btn:hover{background:var(--brown-dark);transform:translateY(-3px);box-shadow:0 10px 24px #70463235}
+    .menu-toggle{display:none;background:none;border:0;color:var(--brown);font-size:25px;cursor:pointer}
+    .hero{min-height:690px;display:grid;grid-template-columns:1fr 1fr;background:var(--cream);position:relative;overflow:hidden}
+    .hero-copy{padding:105px 8% 95px 14%;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:2}
+    .eyebrow{display:flex;align-items:center;gap:12px;color:var(--caramel);font-size:10px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;margin-bottom:22px}
+    .eyebrow:before{content:"";width:34px;height:1px;background:var(--caramel)}
+    h1,h2,h3{font-family:var(--serif);font-weight:500}
+    h1{font-size:clamp(48px,5.5vw,78px);line-height:1.06;letter-spacing:-.04em;max-width:570px}
+    h1 em{color:var(--caramel);font-weight:500}
+    .hero-copy>p{max-width:420px;color:var(--muted);font-size:14px;line-height:1.9;margin:25px 0 32px}
+    .hero-actions{display:flex;gap:13px;align-items:center;flex-wrap:wrap}
+    .btn-outline{display:inline-flex;align-items:center;gap:10px;border:1px solid #bca58f;color:var(--brown);padding:13px 20px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;transition:.25s}
+    .btn-outline:hover{background:#fff8ef;transform:translateY(-3px)}
+    .hero-note{display:flex;align-items:center;gap:12px;margin-top:54px;color:var(--muted);font-size:11px}
+    .tiny-stars{color:var(--caramel);letter-spacing:3px;font-size:15px}
+    .hero-visual{min-height:600px;position:relative;padding:34px 7% 34px 0}
+    .hero-photo{height:100%;min-height:620px;border-radius:48% 48% 4px 4px;overflow:hidden;position:relative;box-shadow:var(--shadow)}
+    .hero-photo img{height:100%;filter:saturate(.88);transition:transform 1.2s}
+    .hero-photo:hover img{transform:scale(1.04)}
+    .hero-photo:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#24170d35,transparent 48%)}
+    .floating-note{position:absolute;left:-42px;bottom:95px;background:var(--paper);padding:20px 24px;box-shadow:var(--shadow);z-index:3;max-width:205px}
+    .floating-note strong{display:block;font:500 20px var(--serif);margin-bottom:5px}
+    .floating-note span{font-size:10px;color:var(--muted);line-height:1.6}
+    .hero-stamp{position:absolute;right:5%;top:8%;width:104px;height:104px;border:1px solid #e8d6b8;border-radius:50%;display:grid;place-items:center;text-align:center;color:#f8ead6;background:#704632;transform:rotate(10deg);font-size:9px;letter-spacing:.12em;line-height:1.5;z-index:4}
+    .hero-stamp b{font:20px var(--serif);display:block}
+    .section{padding:105px 8%}
+    .section-head{text-align:center;max-width:650px;margin:0 auto 48px}
+    .section-head .eyebrow{justify-content:center}
+    .section-head .eyebrow:after{content:"";width:34px;height:1px;background:var(--caramel)}
+    h2{font-size:clamp(36px,4vw,53px);line-height:1.13;letter-spacing:-.025em}
+    .section-head p{font-size:13px;line-height:1.9;color:var(--muted);margin:16px auto 0;max-width:490px}
+    .categories{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+    .category{position:relative;height:390px;overflow:hidden;background:#ddd;border-radius:3px;isolation:isolate}
+    .category img{height:100%;transition:transform .8s;filter:brightness(.82)}
+    .category:hover img{transform:scale(1.07)}
+    .category:after{content:"";position:absolute;inset:35% 0 0;background:linear-gradient(transparent,rgba(34,20,12,.78));z-index:0}
+    .category-copy{position:absolute;bottom:27px;left:28px;right:25px;color:white;z-index:1}
+    .category-copy small{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:#e8c99c}
+    .category-copy h3{font-size:34px;margin:5px 0 7px}
+    .category-copy p{font-size:11px;color:#f3e8dc}
+    .category-arrow{position:absolute;right:25px;bottom:29px;border:1px solid #ffffff8a;width:37px;height:37px;border-radius:50%;display:grid;place-items:center;color:white;z-index:2;transition:.25s}
+    .category:hover .category-arrow{background:white;color:var(--brown)}
+    .menu-section{background:#f4ecdf}
+    .filter-row{display:flex;justify-content:center;gap:9px;margin:-12px 0 34px;flex-wrap:wrap}
+    .filter{border:1px solid #d8c8b5;background:transparent;color:var(--muted);padding:10px 18px;border-radius:30px;font-size:11px;cursor:pointer;transition:.2s}
+    .filter.active,.filter:hover{background:var(--brown);border-color:var(--brown);color:white}
+    .products{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+    .product{background:var(--paper);border:1px solid #eadfD0;transition:transform .3s,box-shadow .3s;overflow:hidden}
+    .product:hover{transform:translateY(-7px);box-shadow:var(--shadow)}
+    .product-photo{height:230px;overflow:hidden;position:relative}
+    .product-photo img{height:100%;transition:transform .7s}
+    .product:hover .product-photo img{transform:scale(1.06)}
+    .product-tag{position:absolute;top:15px;left:15px;background:#fff9ef;color:var(--brown);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:7px 10px}
+    .product-info{padding:20px 21px 22px}
+    .product-top{display:flex;justify-content:space-between;gap:12px;align-items:start}
+    .product h3{font-size:22px}
+    .price{font-size:13px;font-weight:700;color:var(--brown);white-space:nowrap;padding-top:6px}
+    .product-info p{font-size:11px;color:var(--muted);line-height:1.7;margin:9px 0 17px;min-height:38px}
+    .order-link{display:inline-flex;align-items:center;gap:8px;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--brown);font-weight:700;border-bottom:1px solid #c7a47e;padding-bottom:5px}
+    .order-link:hover{color:var(--caramel)}
+    .menu-footnote{text-align:center;color:#907e6d;font-size:10px;margin-top:26px}
+    .story{display:grid;grid-template-columns:minmax(0,760px);justify-content:center;align-items:center}
+    .story-visual{position:relative;padding:0 35px 35px 0}
+    .story-visual img{height:530px;border-radius:3px}
+    .story-visual:after{content:"";position:absolute;right:0;bottom:0;width:70%;height:70%;border:1px solid var(--gold);z-index:-1}
+    .story-copy h2{max-width:650px}
+    .story-copy>p{color:var(--muted);font-size:13px;line-height:2;margin:22px 0}
+    .values{display:flex;gap:26px;margin:30px 0}
+    .value{border-left:1px solid var(--gold);padding-left:13px}
+    .value strong{display:block;font:500 23px var(--serif);color:var(--brown)}
+    .value span{font-size:9px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+    .quote-section{background:var(--brown-dark);color:#fff8ed;text-align:center;padding:90px 8%;position:relative;overflow:hidden}
+    .quote-section:before,.quote-section:after{content:"✳";position:absolute;color:#ffffff0d;font-size:220px;line-height:1}
+    .quote-section:before{left:4%;top:-40px}.quote-section:after{right:4%;bottom:-90px}
+    .quote-mark{font:70px var(--serif);color:var(--gold);line-height:.8}
+    .quote-section blockquote{font:500 clamp(24px,3vw,37px)/1.45 var(--serif);max-width:780px;margin:20px auto}
+    .quote-section p{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#d9b98f}
+    .contact{background:var(--cream);display:grid;grid-template-columns:1fr 1fr;gap:8%;align-items:center}
+    .contact-copy h2{max-width:460px}
+    .contact-copy>p{font-size:13px;color:var(--muted);line-height:1.9;margin:18px 0 28px;max-width:440px}
+    .contact-details{display:grid;gap:17px;margin:28px 0}
+    .detail{display:flex;align-items:center;gap:13px;font-size:12px;color:var(--muted)}
+    .detail-icon{width:37px;height:37px;border:1px solid #d9c7b2;border-radius:50%;display:grid;place-items:center;color:var(--brown);font-size:15px}
+    .contact-card{background:var(--paper);padding:42px;box-shadow:var(--shadow);position:relative}
+    .contact-card:before{content:"";position:absolute;inset:10px;border:1px solid #e8d8c2;pointer-events:none}
+    .contact-card h3{font-size:30px;position:relative}
+    .contact-card p{font-size:12px;color:var(--muted);line-height:1.8;margin:12px 0 23px;position:relative}
+    .contact-card .btn{position:relative;width:100%}
+    footer{background:#302019;color:#f7ecde;padding:45px 8% 25px}
+    .footer-main{display:flex;justify-content:space-between;gap:30px;align-items:center;padding-bottom:35px;border-bottom:1px solid #ffffff22}
+    footer .brand-name{color:#fff7eb}
+    footer .brand-sub{color:#c5a98c}
+    .footer-links{display:flex;gap:23px;flex-wrap:wrap}
+    .footer-links a{font-size:10px;color:#d4c1ad}
+    .footer-bottom{display:flex;justify-content:space-between;gap:15px;padding-top:22px;color:#ad9784;font-size:9px;letter-spacing:.05em}
+    .whatsapp-float{position:fixed;right:24px;bottom:24px;width:57px;height:57px;border-radius:50%;display:grid;place-items:center;background:#258b55;color:white;font-size:25px;box-shadow:0 8px 25px #174d333f;z-index:40;transition:.25s}
+    .whatsapp-float:hover{transform:translateY(-5px) scale(1.04)}
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity .75s ease,transform .75s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+    .delay-1{transition-delay:.12s}.delay-2{transition-delay:.24s}
+    @media(max-width:900px){
+      header{padding:0 5%}.hero-copy{padding-left:9%;padding-right:6%}.section{padding:82px 6%}
+      .hero{min-height:610px}.hero-visual{padding-right:5%}.hero-photo{min-height:550px}
+      .categories{gap:14px}.category{height:330px}.products{gap:14px}.product-photo{height:190px}
+      .story{gap:5%}.story-visual img{height:460px}.contact{gap:5%}
+    }
+    @media(max-width:680px){
+      .announcement{font-size:9px}
+      header{height:72px}.brand-mark{width:37px;height:37px}.brand-name{font-size:17px}
+      .menu-toggle{display:block}
+      nav{display:none;position:absolute;top:71px;left:0;right:0;background:var(--paper);padding:22px 7% 26px;box-shadow:0 18px 25px #35251f12;flex-direction:column;align-items:stretch;gap:20px}
+      nav.open{display:flex}nav a{font-size:13px}.nav-cta{text-align:center}
+      .hero{grid-template-columns:1fr;min-height:0}
+      .hero-copy{padding:76px 8% 42px}.hero-copy>p{font-size:13px;margin:19px 0 25px}
+      h1{font-size:53px}.hero-note{margin-top:30px}
+      .hero-visual{padding:0 8% 48px 13%;min-height:0}
+      .hero-photo{height:390px;min-height:390px;border-radius:48% 48% 3px 3px}
+      .floating-note{left:0;bottom:75px;padding:15px 18px;max-width:175px}
+      .floating-note strong{font-size:17px}.hero-stamp{width:82px;height:82px;font-size:7px;right:5%;top:5%}.hero-stamp b{font-size:17px}
+      .section{padding:72px 7%}.section-head{margin-bottom:34px}
+      .categories{grid-template-columns:1fr;gap:15px}.category{height:330px}
+      .products{grid-template-columns:1fr 1fr;gap:12px}.product-photo{height:155px}
+      .product-info{padding:15px 13px}.product h3{font-size:18px}.price{font-size:11px}.product-info p{font-size:10px;min-height:54px}
+      .product-tag{top:9px;left:9px;font-size:8px;padding:6px 7px}
+      .story,.contact{grid-template-columns:1fr;gap:40px}
+      .story-visual{padding:0 20px 20px 0}.story-visual img{height:390px}
+      .story-copy h2,.contact-copy h2{font-size:39px}
+      .values{gap:18px}.value strong{font-size:20px}.value span{font-size:8px}
+      .quote-section{padding:72px 8%}.quote-section:before,.quote-section:after{font-size:130px}
+      .contact-card{padding:32px 27px}
+      .footer-main,.footer-bottom{flex-direction:column;align-items:flex-start}
+      .footer-links{gap:15px}
+      .whatsapp-float{right:17px;bottom:17px;width:52px;height:52px}
+    }
+    @media(max-width:380px){.products{grid-template-columns:1fr}.product-photo{height:210px}.hero-actions{align-items:stretch;flex-direction:column}.hero-actions a{justify-content:center}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}.reveal{opacity:1;transform:none}}
+  
+    .bread-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px 18px;
+      margin: 14px 0 0;
+      padding-left: 19px;
+      color: var(--muted, #6b625c);
+      font-size: .94rem;
+      line-height: 1.55;
+    }
+    .bread-list li::marker { color: var(--accent, #b8794b); }
+    @media (max-width: 480px) {
+      .bread-list { grid-template-columns: 1fr; }
+    }
+
+  </style>
+</head>
+<body>
+  <div class="announcement">Feito com carinho, todos os dias <span>✦</span> Encomendas pelo WhatsApp</div>
+  <header>
+    <a class="brand" href="#inicio" aria-label="Um Salto no Sabor - início">
+      <div class="brand-mark">A</div>
+      <div><div class="brand-name">Um Salto no Sabor</div><div class="brand-sub">Confeitaria</div></div>
+    </a>
+    <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">☰</button>
+    <nav id="nav">
+      <a href="#inicio">Início</a><a href="#especialidades">Especialidades</a><a href="#cardapio">Cardápio</a><a href="#historia">Nossa essência</a><a href="#contato">Contato</a>
+      <a class="nav-cta" href="https://wa.me/5512997420690?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Casa%20Aurora." target="_blank" rel="noopener">Fazer encomenda ↗</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="hero-copy">
+        <div class="eyebrow">O sabor de se sentir em casa</div>
+        <h1>Pequenos prazeres, <em>grandes</em> momentos.</h1>
+        
+        <div class="hero-actions">
+          <a class="btn" href="#cardapio">Conheça nosso cardápio <span>→</span></a>
+          <a class="btn-outline" href="https://wa.me/5512997420690?text=Ol%C3%A1!%20Gostaria%20de%20fazer%20uma%20encomenda." target="_blank" rel="noopener">Encomende agora ↗</a>
+        </div>
+        <div class="hero-note"><span class="tiny-stars">★★★★★</span><span>Feito à mão, com ingredientes escolhidos com carinho</span></div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-photo"><img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1200&q=88" alt="Pães artesanais recém-assados em uma mesa"></div>
+        <div class="floating-note"><strong>O cheirinho que acolhe.</strong><span>Receitas especiais para deixar seu dia mais gostoso.</span></div>
+        <div class="hero-stamp"><div><b>Feito</b>com afeto<br>desde sempre</div></div>
+      </div>
+    </section>
+
+    <section class="section" id="especialidades">
+      <div class="section-head reveal">
+        <div class="eyebrow">Um carinho em cada detalhe</div>
+        <h2>Sabores para todos os momentos.</h2>
+        <p>Do café da manhã à comemoração especial, tem sempre uma delícia esperando por você.</p>
+      </div>
+      <div class="categories">
+        <a class="category reveal" href="#cardapio" data-filter-link="paes">
+          <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=900&q=85" alt="Pães artesanais recém-assados">
+          <div class="category-copy"><small>Fresquinhos e especiais</small><h3>Pães artesanais</h3><p>O começo perfeito para qualquer dia.</p></div><span class="category-arrow">↗</span>
+        </a>
+        <a class="category reveal delay-1" href="#cardapio" data-filter-link="bolos">
+          <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=900&q=85" alt="Bolo decorado">
+          <div class="category-copy"><small>Doces e salgados</small><h3>Bolos</h3><p>Para celebrar, compartilhar e aproveitar.</p></div><span class="category-arrow">↗</span>
+        </a>
+        <a class="category reveal delay-2" href="#cardapio" data-filter-link="salgados">
+          <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=900&q=85" alt="Salgados assados">
+          <div class="category-copy"><small>Delícias assadas</small><h3>Salgados</h3><p>Empadas, esfirras, pastéis e muito mais.</p></div><span class="category-arrow">↗</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="section menu-section" id="cardapio">
+      <div class="section-head reveal">
+        <div class="eyebrow">Escolhidos com carinho</div>
+        <h2>Um cardápio para dar água na boca.</h2>
+        <p>Conheça alguns dos nossos queridinhos. Para consultar sabores, tamanhos e disponibilidade, fale com a gente.</p>
+      </div>
+      <div class="filter-row reveal" role="group" aria-label="Filtrar produtos">
+        <button class="filter active" data-filter="todos">Todos</button>
+        <button class="filter" data-filter="paes">Pães</button>
+        <button class="filter" data-filter="bolos">Bolos</button>
+        <button class="filter" data-filter="tortas">Tortas</button>
+        <button class="filter" data-filter="salgados">Salgados</button>
+      </div>
+      <div class="products">
+        <article class="product reveal" data-category="paes"><div class="product-photo"><img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=700&q=85" alt="Pães artesanais dourados"><span class="product-tag">Feitos com carinho</span></div><div class="product-info"><div class="product-top"><h3>Pães artesanais</h3><span class="price">Consulte</span></div><ul class="bread-list"><li>Pão de batata</li><li>Pão de mandioca</li><li>Pão de cenoura</li><li>Rosca de coco</li><li>Pão integral</li><li>Pão de ervas</li><li>Pão de leite</li></ul><a class="order-link" href="https://wa.me/5512997420690?text=Ol%C3%A1!%20Quero%20saber%20sobre%20os%20p%C3%A3es%20artesanais." target="_blank" rel="noopener">Quero esse <span>↗</span></a></div></article>
+        <article class="product reveal delay-1" data-category="salgados"><div class="product-photo"><img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=700&q=85" alt="Salgados assados"><span class="product-tag">Uma delícia</span></div><div class="product-info"><div class="product-top"><h3>Empadas</h3><span class="price">Consulte</span></div><p>Massa delicada e recheio saboroso para qualquer hora.</p><a class="order-link" href="https://wa.me/5512997420690?text=Ol%C3%A1!%20Quero%20saber%20sobre%20as%20empadas." target="_blank" rel="noopener">Quero esse <span>↗</span></a></div></article>
+        <article class="product reveal delay-2" data-category="bolos"><div class="product-photo"><img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=700&q=85" alt="Bolo doce decorado"><span class="product-tag">Para adoçar o dia</span></div><div class="product-info"><div class="product-top"><h3>Bolo doce</h3><span class="price">Consulte</span></div><p>Uma opção especial para acompanhar seu café ou comemorar.</p><a class="order-link" href="https://wa.me/5512997420690?text=Ol%C3%A1!%20Quero%20saber%20sobre%20o%20bolo%20doce." target="_blank" rel="noopener">Quero esse <span>↗</span></a></div></article>
+        <article class="product reveal" data-category="bolos"><div class="product-photo"><img src="https://static.itdg.com.br/images/640-400/8fa59ece855ae6b46f31577f0335245f/146511-original.jpg" alt="Torta salgada usada como representação do bolo salgado"></div><div class="product-info"><div class="product-top"><h3>Bolo salgado</h3><span class="price">Consulte</span></div><p>Uma escolha prática e saborosa para servir e compartilhar.</p><a class="order-link" href="https://wa.me/5512997420690?text=Ol%C3%A1!%20Quero%20saber%20sobre%20o%20bolo%20salgado." target="_blank" rel="noopener">Quero esse <span>↗</span></a></div></article>
+        <article class="product reveal delay-1" data-category="tortas"><div class="product-photo"><img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=700&q=85" alt="Torta artesanal decorada"></div><div class="product-info"><div class="product-top"><h3>Tortas</h3><span class="price">Consulte</span></div><p>Receitas caprichadas para deixar qualquer ocasião mais gostosa.</p><a class="order-link" href="https://wa.me/5512997420690?text=Ol%C3%A1!%20Quero%20saber%20sobre%20as%20tortas." target="_blank" rel="noopener">Quero esse <span>↗</span></a></div></article>
+        <article class="product reveal delay-2" data-category="salgados"><div class="product-photo"><img src="https://images.unsplash.com/photo-1601050690117-94f5f6fa8bd7?auto=format&fit=crop&w=700&q=85" alt="Esfirras assadas"></div><div class="product-info"><div class="product-top"><h3>Esfirras</h3><span class="price">Consulte</span></div><p>Massa macia e recheio delicioso em cada mordida.</p><a class="order-link" href="https://wa.me/5512997420690?text=Ol%C3%A1!%20Quero%20saber%20sobre%20as%20esfirras." target="_blank" rel="noopener">Quero esse <span>↗</span></a></div></article>
+        <article class="product reveal" data-category="salgados"><div class="product-photo"><img src="https://r2.flowith.net/files/webp/G6M2O-bandeja_salgados_artesanais_index_1%401024x1024.webp" alt="Coxinhas douradas e bolinhas de queijo"></div><div class="product-info"><div class="product-top"><h3>Salgadinhos</h3><span class="price">Consulte</span></div><p>Perfeitos para festas, reuniões e momentos especiais.</p><a class="order-link" href="https://wa.me/5512997420690?text=Ol%C3%A1!%20Quero%20saber%20sobre%20os%20salgadinhos." target="_blank" rel="noopener">Quero esse <span>↗</span></a></div></article>
+        <article class="product reveal delay-1" data-category="salgados"><div class="product-photo"><img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=700&q=85" alt="Pastéis de forno dourados"></div><div class="product-info"><div class="product-top"><h3>Pastéis de forno</h3><span class="price">Consulte</span></div><p>Assadinhos, dourados e ótimos para um lanche especial.</p><a class="order-link" href="https://wa.me/5512997420690?text=Ol%C3%A1!%20Quero%20saber%20sobre%20os%20past%C3%A9is%20de%20forno." target="_blank" rel="noopener">Quero esse <span>↗</span></a></div></article>
+      </div>
+      <p class="menu-footnote">* Fotos ilustrativas. Consulte sabores, valores, tamanhos e disponibilidade diretamente pelo WhatsApp.</p>
+    </section>
+
+    <section class="section" id="historia">
+      <div class="story">
+        <div class="story-copy reveal delay-1">
+          <div class="eyebrow">Mais que uma confeitaria</div>
+          <h2>Tem coisa que só fica boa quando é feita com amor.</h2>
+          <p>Acreditamos que comida boa tem o poder de aproximar pessoas. Por isso, cada produto é preparado com atenção aos detalhes, carinho no processo e vontade de fazer parte de momentos especiais.</p>
+          <p>Nosso ingrediente secreto é simples: cuidado em tudo o que fazemos. Queremos que cada visita — e cada mordida — tenha gostinho de quero mais.</p>
+          <div class="values"><div class="value"><strong>♡</strong><span>Feito com carinho</span></div><div class="value"><strong>✧</strong><span>Capricho nos detalhes</span></div><div class="value"><strong>∞</strong><span>Sabor de verdade</span></div></div>
+          <a class="btn" href="https://wa.me/5512997420690?text=Ol%C3%A1!%20Quero%20conhecer%20melhor%20a%20confeitaria." target="_blank" rel="noopener">Fale com a gente ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="quote-section">
+      <div class="quote-mark">“</div>
+      <blockquote>Os melhores momentos da vida merecem um sabor especial — e os dias comuns também.</blockquote>
+      <p>Um Salto no Sabor · Confeitaria</p>
+    </section>
+
+    <section class="section contact" id="contato">
+      <div class="contact-copy reveal">
+        <div class="eyebrow">Vai ser um prazer atender você</div>
+        <h2>Seu próximo momento gostoso começa aqui.</h2>
+        <p>Quer fazer uma encomenda, consultar nosso cardápio ou tirar uma dúvida? Mande uma mensagem. Vamos conversar!</p>
+        <div class="contact-details">
+          <div class="detail"><span class="detail-icon">☏</span><span>WhatsApp: (12) 99742-0690</span></div>
+          <div class="detail"><span class="detail-icon">♡</span><span>Atendimento feito com carinho</span></div>
+          <div class="detail"><span class="detail-icon">✧</span><span>Pães artesanais · Empadas · Bolos · Tortas · Salgados</span></div>
+        </div>
+      </div>
+      <div class="contact-card reveal delay-1">
+        <h3>Vamos adoçar seu dia?</h3>
+        <p>Conte o que você está procurando. É só clicar no botão abaixo para falar diretamente com a gente pelo WhatsApp.</p>
+        <a class="btn" href="https://wa.me/5512997420690?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Casa%20Aurora%20e%20gostaria%20de%20fazer%20uma%20encomenda." target="_blank" rel="noopener">Conversar pelo WhatsApp ↗</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-main">
+      <a class="brand" href="#inicio"><div class="brand-mark">A</div><div><div class="brand-name">Um Salto no Sabor</div><div class="brand-sub">Confeitaria</div></div></a>
+      <div class="footer-links"><a href="#inicio">Início</a><a href="#cardapio">Cardápio</a><a href="#historia">Nossa essência</a><a href="#contato">Contato</a></div>
+    </div>
+    <div class="footer-bottom"><span>© <span id="year"></span> Um Salto no Sabor. Todos os direitos reservados.</span><span>Feito com carinho, do primeiro ao último detalhe.</span></div>
+  </footer>
+
+  <a class="whatsapp-float" href="https://wa.me/5512997420690?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Casa%20Aurora." target="_blank" rel="noopener" aria-label="Fale conosco pelo WhatsApp">☏</a>
+
+  <script>
+    // Menu responsivo
+    const toggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('#nav');
+    toggle.addEventListener('click', () => {
+      const opened = nav.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', String(opened));
+      toggle.textContent = opened ? '×' : '☰';
+    });
+    nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      nav.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.textContent = '☰';
+    }));
+
+    // Filtro do cardápio
+    const filters = document.querySelectorAll('.filter');
+    const products = document.querySelectorAll('.product');
+    function filterProducts(category) {
+      filters.forEach(button => button.classList.toggle('active', button.dataset.filter === category));
+      products.forEach(product => {
+        const show = category === 'todos' || product.dataset.category === category;
+        product.style.display = show ? '' : 'none';
+      });
+    }
+    filters.forEach(button => button.addEventListener('click', () => filterProducts(button.dataset.filter)));
+    document.querySelectorAll('[data-filter-link]').forEach(link => link.addEventListener('click', () => {
+      filterProducts(link.dataset.filterLink);
+    }));
+
+    // Animação suave conforme os elementos entram na tela
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(element => observer.observe(element));
+
+    document.querySelector('#year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
