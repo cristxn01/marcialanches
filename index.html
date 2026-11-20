@@ -185,7 +185,21 @@
       .bread-list { grid-template-columns: 1fr; }
     }
 
-  </style>
+  
+    .bread-toggle{border:0;background:transparent;color:var(--brown);font:700 12px var(--sans);cursor:pointer;padding:5px 0;white-space:nowrap;display:flex;align-items:center;gap:7px}
+    .bread-toggle .toggle-icon{display:inline-block;transition:transform .25s;font-size:16px}
+    .bread-toggle[aria-expanded="true"] .toggle-icon{transform:rotate(45deg)}
+    .bread-options{display:none;margin-top:17px;border-top:1px solid var(--line);padding-top:15px}
+    .bread-options.open{display:block}
+    .bread-group{margin-bottom:16px}
+    .bread-group h4{font:600 14px var(--serif);color:var(--brown);margin-bottom:7px}
+    .bread-group ul{list-style:none;display:grid;gap:5px;color:var(--muted);font-size:11px;line-height:1.55}
+    .bread-group li{display:flex;justify-content:space-between;gap:10px}
+    .bread-group li span:last-child{font-weight:700;color:var(--brown);white-space:nowrap}
+    .bread-group .group-note{font-size:11px;color:var(--muted);margin-top:5px}
+    .bread-order{margin-top:3px}
+    @media(max-width:480px){.bread-group li{align-items:flex-start}.bread-group li span:last-child{white-space:nowrap}}
+</style>
 </head>
 <body>
   <div class="announcement">Feito com carinho, todos os dias <span>✦</span> Encomendas pelo WhatsApp</div>
@@ -252,18 +266,55 @@
         <button class="filter active" data-filter="todos">Todos</button>
         <button class="filter" data-filter="paes">Pães</button>
         <button class="filter" data-filter="bolos">Bolos</button>
-        <button class="filter" data-filter="tortas">Tortas</button>
         <button class="filter" data-filter="salgados">Salgados</button>
       </div>
       <div class="products">
-        <article class="product reveal" data-category="paes"><div class="product-photo"><img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=700&q=85" alt="Pães artesanais dourados"><span class="product-tag">Feitos com carinho</span></div><div class="product-info"><div class="product-top"><h3>Pães artesanais</h3><span class="price">Consulte</span></div><ul class="bread-list"><li>Pão de batata</li><li>Pão de mandioca</li><li>Pão de cenoura</li><li>Rosca de coco</li><li>Pão integral</li><li>Pão de ervas</li><li>Pão de leite</li></ul><a class="order-link" href="https://wa.me/5512997420690?text=Ol%C3%A1!%20Quero%20saber%20sobre%20os%20p%C3%A3es%20artesanais." target="_blank" rel="noopener">Quero esse <span>↗</span></a></div></article>
-        <article class="product reveal delay-1" data-category="salgados"><div class="product-photo"><img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=700&q=85" alt="Salgados assados"><span class="product-tag">Uma delícia</span></div><div class="product-info"><div class="product-top"><h3>Empadas</h3><span class="price">Consulte</span></div><p>Massa delicada e recheio saboroso para qualquer hora.</p><a class="order-link" href="https://wa.me/5512997420690?text=Ol%C3%A1!%20Quero%20saber%20sobre%20as%20empadas." target="_blank" rel="noopener">Quero esse <span>↗</span></a></div></article>
-        <article class="product reveal delay-2" data-category="bolos"><div class="product-photo"><img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=700&q=85" alt="Bolo doce decorado"><span class="product-tag">Para adoçar o dia</span></div><div class="product-info"><div class="product-top"><h3>Bolo doce</h3><span class="price">Consulte</span></div><p>Uma opção especial para acompanhar seu café ou comemorar.</p><a class="order-link" href="https://wa.me/5512997420690?text=Ol%C3%A1!%20Quero%20saber%20sobre%20o%20bolo%20doce." target="_blank" rel="noopener">Quero esse <span>↗</span></a></div></article>
-        <article class="product reveal" data-category="bolos"><div class="product-photo"><img src="https://static.itdg.com.br/images/640-400/8fa59ece855ae6b46f31577f0335245f/146511-original.jpg" alt="Torta salgada usada como representação do bolo salgado"></div><div class="product-info"><div class="product-top"><h3>Bolo salgado</h3><span class="price">Consulte</span></div><p>Uma escolha prática e saborosa para servir e compartilhar.</p><a class="order-link" href="https://wa.me/5512997420690?text=Ol%C3%A1!%20Quero%20saber%20sobre%20o%20bolo%20salgado." target="_blank" rel="noopener">Quero esse <span>↗</span></a></div></article>
-        <article class="product reveal delay-1" data-category="tortas"><div class="product-photo"><img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=700&q=85" alt="Torta artesanal decorada"></div><div class="product-info"><div class="product-top"><h3>Tortas</h3><span class="price">Consulte</span></div><p>Receitas caprichadas para deixar qualquer ocasião mais gostosa.</p><a class="order-link" href="https://wa.me/5512997420690?text=Ol%C3%A1!%20Quero%20saber%20sobre%20as%20tortas." target="_blank" rel="noopener">Quero esse <span>↗</span></a></div></article>
-        <article class="product reveal delay-2" data-category="salgados"><div class="product-photo"><img src="https://images.unsplash.com/photo-1601050690117-94f5f6fa8bd7?auto=format&fit=crop&w=700&q=85" alt="Esfirras assadas"></div><div class="product-info"><div class="product-top"><h3>Esfirras</h3><span class="price">Consulte</span></div><p>Massa macia e recheio delicioso em cada mordida.</p><a class="order-link" href="https://wa.me/5512997420690?text=Ol%C3%A1!%20Quero%20saber%20sobre%20as%20esfirras." target="_blank" rel="noopener">Quero esse <span>↗</span></a></div></article>
+        <article class="product reveal" data-category="paes"><div class="product-photo"><img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=700&q=85" alt="Pães artesanais dourados"><span class="product-tag">Feitos com carinho</span></div><div class="product-info">
+          <div class="product-top"><h3>Pães artesanais</h3><button class="bread-toggle" type="button" aria-expanded="false" aria-controls="bread-options">Ver opções <span class="toggle-icon">＋</span></button></div>
+          <div class="bread-options" id="bread-options">
+            <div class="bread-group"><h4>Pães tradicionais</h4><ul><li><span>Pão de batata</span></li><li><span>Pão de mandioca</span></li><li><span>Pão de leite</span></li><li><span>Pão de cenoura</span></li><li><span>Pão de ervas</span></li></ul><p class="group-note">5 unidades — R$ 9,00 · 10 unidades — R$ 15,00</p></div>
+            <div class="bread-group"><h4>Pães de forma</h4><ul><li><span>Pão integral</span><span>R$ 18,00 / unidade</span></li><li><span>Pão sem glúten</span><span>R$ 22,00 / unidade</span></li></ul></div>
+            <div class="bread-group"><h4>Roscas grandes</h4><ul><li><span>Rosca de canela</span><span>R$ 18,00</span></li><li><span>Rosca de coco</span><span>R$ 18,00</span></li><li><span>Rosca de canela com nozes</span><span>R$ 20,00</span></li><li><span>Rosca de frutas cristalizadas com passas</span><span>R$ 20,00</span></li></ul></div>
+            <div class="bread-group"><h4>Pães especiais (4 unidades)</h4><ul><li><span>Pão de batata recheado com catupiry</span><span>R$ 20,00</span></li><li><span>Pão de batata recheado com frango e catupiry</span><span>R$ 30,00</span></li><li><span>Pão integral recheado com ricota</span><span>R$ 24,00</span></li></ul></div>
+          </div>
+          <a class="order-link bread-order" href="https://wa.me/5512997420690?text=Ol%C3%A1!%20Quero%20encomendar%20p%C3%A3es%20artesanais." target="_blank" rel="noopener">Encomendar <span>↗</span></a>
+        </div></article>
+        <article class="product reveal delay-1" data-category="salgados"><div class="product-photo"><img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=700&q=85" alt="Empadas e salgados assados"><span class="product-tag">Uma delícia</span></div><div class="product-info">
+          <div class="product-top"><h3>Empadas e empadões</h3><button class="bread-toggle" type="button" aria-expanded="false" aria-controls="empada-options">Ver opções <span class="toggle-icon">＋</span></button></div>
+          <div class="bread-options" id="empada-options">
+            <div class="bread-group"><h4>Empadinhas (festa)</h4><ul><li><span>100 unidades</span><span>R$ 120,00</span></li></ul></div>
+            <div class="bread-group"><h4>Empada média</h4><ul><li><span>Unidade</span><span>R$ 7,00</span></li></ul></div>
+            <div class="bread-group"><h4>Empadão</h4><ul><li><span>Unidade</span><span>R$ 12,00</span></li></ul></div>
+          </div>
+          <a class="order-link bread-order" href="https://wa.me/5512997420690?text=Ol%C3%A1!%20Quero%20encomendar%20empadas%20ou%20empad%C3%B5es." target="_blank" rel="noopener">Encomendar <span>↗</span></a>
+        </div></article>
+        <article class="product reveal delay-2" data-category="bolos"><div class="product-photo"><img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=700&q=85" alt="Bolos variados"><span class="product-tag">Para adoçar o dia</span></div><div class="product-info">
+          <div class="product-top"><h3>Bolos</h3><button class="bread-toggle" type="button" aria-expanded="false" aria-controls="bolo-options">Ver opções <span class="toggle-icon">＋</span></button></div>
+          <div class="bread-options" id="bolo-options">
+            <div class="bread-group"><h4>Sabores e preços</h4><ul>
+              <li><span>Bolo salgado</span><span>R$ 150,00</span></li>
+              <li><span>Bolo de aveia com canela e banana</span><span>R$ 30,00</span></li>
+              <li><span>Bolo de cenoura com cobertura de chocolate</span><span>R$ 35,00</span></li>
+              <li><span>Bolo de chocolate com ganache</span><span>R$ 40,00</span></li>
+              <li><span>Bolo de fubá com goiabada</span><span>R$ 25,00</span></li>
+              <li><span>Bolo de laranja</span><span>R$ 30,00</span></li>
+              <li><span>Bolo de maçã com passas e canela</span><span>R$ 25,00</span></li>
+              <li><span>Bolo de mandioca</span><span>R$ 35,00</span></li>
+              <li><span>Bolo de milho</span><span>R$ 35,00</span></li>
+              <li><span>Bolo formigueiro com cobertura de chocolate</span><span>R$ 55,00</span></li>
+              <li><span>Bolo de cenoura mesclado com chocolate e cobertura de chocolate</span><span>R$ 40,00</span></li>
+            </ul></div>
+          </div>
+          <a class="order-link bread-order" href="https://wa.me/5512997420690?text=Ol%C3%A1!%20Quero%20encomendar%20bolos." target="_blank" rel="noopener">Encomendar <span>↗</span></a>
+        </div></article>
+        <article class="product reveal delay-2" data-category="salgados"><div class="product-photo"><img src="https://images.unsplash.com/photo-1601050690117-94f5f6fa8bd7?auto=format&fit=crop&w=700&q=85" alt="Salgados assados variados"></div><div class="product-info">
+          <div class="product-top"><h3>Salgados Assados</h3><button class="bread-toggle" type="button" aria-expanded="false" aria-controls="assados-options">Ver opções <span class="toggle-icon">＋</span></button></div>
+          <div class="bread-options" id="assados-options">
+            <div class="bread-group"><h4>Opções</h4><ul><li><span>Barquinha</span></li><li><span>Empadinha de frango</span></li><li><span>Empadinha de queijo</span></li><li><span>Empadinha de palmito</span></li><li><span>Esfiha de carne</span></li><li><span>Esfiha de frango</span></li><li><span>Esfiha de pizza</span></li><li><span>Pastelzinho de forno</span></li></ul><p class="group-note">15 unidades — R$ 20,00 · 100 unidades — R$ 90,00</p></div>
+          </div>
+          <a class="order-link bread-order" href="https://wa.me/5512997420690?text=Ol%C3%A1!%20Quero%20encomendar%20salgados%20assados." target="_blank" rel="noopener">Encomendar <span>↗</span></a>
+        </div></article>
         <article class="product reveal" data-category="salgados"><div class="product-photo"><img src="https://r2.flowith.net/files/webp/G6M2O-bandeja_salgados_artesanais_index_1%401024x1024.webp" alt="Coxinhas douradas e bolinhas de queijo"></div><div class="product-info"><div class="product-top"><h3>Salgadinhos</h3><span class="price">Consulte</span></div><p>Perfeitos para festas, reuniões e momentos especiais.</p><a class="order-link" href="https://wa.me/5512997420690?text=Ol%C3%A1!%20Quero%20saber%20sobre%20os%20salgadinhos." target="_blank" rel="noopener">Quero esse <span>↗</span></a></div></article>
-        <article class="product reveal delay-1" data-category="salgados"><div class="product-photo"><img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=700&q=85" alt="Pastéis de forno dourados"></div><div class="product-info"><div class="product-top"><h3>Pastéis de forno</h3><span class="price">Consulte</span></div><p>Assadinhos, dourados e ótimos para um lanche especial.</p><a class="order-link" href="https://wa.me/5512997420690?text=Ol%C3%A1!%20Quero%20saber%20sobre%20os%20past%C3%A9is%20de%20forno." target="_blank" rel="noopener">Quero esse <span>↗</span></a></div></article>
       </div>
       <p class="menu-footnote">* Fotos ilustrativas. Consulte sabores, valores, tamanhos e disponibilidade diretamente pelo WhatsApp.</p>
     </section>
@@ -293,7 +344,9 @@
         <h2>Seu próximo momento gostoso começa aqui.</h2>
         <p>Quer fazer uma encomenda, consultar nosso cardápio ou tirar uma dúvida? Mande uma mensagem. Vamos conversar!</p>
         <div class="contact-details">
-          <div class="detail"><span class="detail-icon">☏</span><span>WhatsApp: (12) 99742-0690</span></div>
+          <div class="detail"><span class="detail-icon">☏</span><span>WhatsApp: <a href="https://wa.me/5512997420690" target="_blank" rel="noopener">(12) 99742-0690 ↗</a></span></div>
+          <div class="detail"><span class="detail-icon">◎</span><span>Instagram: <a href="https://www.instagram.com/saltonosabor/" target="_blank" rel="noopener">@saltonosabor ↗</a></span></div>
+          <div class="detail"><span class="detail-icon">✉</span><span>Gmail: <a href="mailto:salto.nosabor@gmail.com">salto.nosabor@gmail.com ↗</a></span></div>
           <div class="detail"><span class="detail-icon">♡</span><span>Atendimento feito com carinho</span></div>
           <div class="detail"><span class="detail-icon">✧</span><span>Pães artesanais · Empadas · Bolos · Tortas · Salgados</span></div>
         </div>
@@ -309,7 +362,7 @@
   <footer>
     <div class="footer-main">
       <a class="brand" href="#inicio"><div class="brand-mark">A</div><div><div class="brand-name">Um Salto no Sabor</div><div class="brand-sub">Confeitaria</div></div></a>
-      <div class="footer-links"><a href="#inicio">Início</a><a href="#cardapio">Cardápio</a><a href="#historia">Nossa essência</a><a href="#contato">Contato</a></div>
+      <div class="footer-links"><a href="#inicio">Início</a><a href="#cardapio">Cardápio</a><a href="#historia">Nossa essência</a><a href="#contato">Contato</a><a href="https://www.instagram.com/saltonosabor/" target="_blank" rel="noopener">Instagram ↗</a><a href="mailto:salto.nosabor@gmail.com">E-mail ↗</a></div>
     </div>
     <div class="footer-bottom"><span>© <span id="year"></span> Um Salto no Sabor. Todos os direitos reservados.</span><span>Feito com carinho, do primeiro ao último detalhe.</span></div>
   </footer>
@@ -346,6 +399,18 @@
       filterProducts(link.dataset.filterLink);
     }));
 
+
+    // Abrir e recolher opções de produtos
+    document.querySelectorAll('.bread-toggle').forEach(button => {
+      button.addEventListener('click', () => {
+        const panel = document.getElementById(button.getAttribute('aria-controls'));
+        const expanded = button.getAttribute('aria-expanded') === 'true';
+        button.setAttribute('aria-expanded', String(!expanded));
+        panel.classList.toggle('open', !expanded);
+        button.querySelector('.toggle-icon').textContent = expanded ? '＋' : '－';
+        button.firstChild.textContent = expanded ? 'Ver opções ' : 'Ocultar opções ';
+      });
+    });
     // Animação suave conforme os elementos entram na tela
     const observer = new IntersectionObserver((entries, obs) => {
       entries.forEach(entry => {
